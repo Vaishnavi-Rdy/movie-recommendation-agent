@@ -10,8 +10,6 @@ with open("movies.csv", "r", encoding="utf-8") as file:
     reader = csv.DictReader(file)
 
     for row in reader:
-
-        # Skip empty rows
         if not row["Movie"] or not row["Genre"]:
             continue
 
@@ -59,4 +57,4 @@ def recommend():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
