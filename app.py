@@ -1,31 +1,62 @@
-import streamlit as st
-import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+from flask import Flask, render_template, request
+import csv
+import os
 
-st.set_page_config(page_title="Movie Recommendation Agent")
-st.title("🎬 Movie Recommendation Agent")
+app = Flask(__name__)
 
-@st.cache_data
-def load_data():
-    df = pd.read_csv("movies.csv")
-    df = df.dropna(subset=['Movie', 'Genre'])
-    return df
+movies = []
 
-df = load_data()
+with open("movies.csv", "r", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
 
-tfidf = TfidfVectorizer(stop_words='english')
-tfidf_matrix = tfidf.fit_transform(df['Genre'])
-cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+    for row in reader:
 
-movie_list = df['Movie'].tolist()
-selected_movie = st.selectbox("🎥 Oka Movie ni select cheyyi", movie_list)
+        # Skip empty rows
+        if not row["Movie"] or not row["Genre"]:
+            continue
 
-if st.button("Recommend Cheyyi 🔥"):
-    idx = df[df['Movie'] == selected_movie].index[0]
-    sim_scores = sorted(list(enumerate(cosine_sim[idx])), key=lambda x: x[1], reverse=True)[1:6]
-    movie_indices = [i[0] for i in sim_scores]
-    
-    st.subheader(f"'{selected_movie}' laga unna 5 movies:")
-    for i in movie_indices:
-        st.write(f"**{df['Movie'].iloc[i]}** - {df['Genre'].iloc[i]}")
+        row["Movie"] = row["Movie"].strip()
+        row["Genre"] = row["Genre"].strip()
+
+        poster_name = row["Movie"].lower().replace(" ", "") + ".jpg"
+
+        poster_path = os.path.join(app.static_folder, "posters", poster_name)
+
+        if os.path.exists(poster_path):
+            row["Poster"] = poster_name
+        else:
+            row["Poster"] = "default.jpg"
+
+        movies.append(row)
+
+
+@app.route("/")
+def home():
+    genres = sorted(list(set(movie["Genre"] for movie in movies)))
+    return render_template("index.html", genres=genres)
+
+
+@app.route("/recommend", methods=["POST"])
+def recommend():
+    genre = request.form["genre"].strip()
+
+    recommendations = []
+
+    for movie in movies:
+        if movie["Genre"].strip().lower() == genre.lower():
+            recommendations.append(movie)
+
+    recommendations.sort(
+        key=lambda x: float(x["Rating"]),
+        reverse=True
+    )
+
+    return render_template(
+        "result.html",
+        genre=genre,
+        movies=recommendations
+    )
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
