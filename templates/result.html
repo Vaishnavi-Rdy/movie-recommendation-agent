@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recommended Movies</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),
+    url("/static/bg.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:white;
+}
+
+.container{
+    width:95%;
+    max-width:1300px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+h1{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:40px;
+    color:#ff4d4d;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+    transition:.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,.5);
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 25px red;
+}
+
+.poster{
+    width:180px;
+    height:250px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.movie{
+    font-size:26px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.info{
+    margin:8px 0;
+    font-size:18px;
+}
+
+.rating{
+    color:gold;
+    font-size:20px;
+}
+
+.watch{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 22px;
+    background:#e50914;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.watch:hover{
+    background:#b20710;
+}
+
+.back{
+    display:block;
+    width:220px;
+    margin:40px auto;
+    text-align:center;
+    padding:15px;
+    background:#e50914;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+.back:hover{
+    background:#b20710;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🎬 {{ genre }} Movies</h1>
+
+<div class="grid">
+
+{% for movie in movies %}
+
+<div class="card">
+
+<img src="{{ url_for('static', filename='posters/' ~ movie['Poster']) }}" class="poster">
+
+<div class="movie">
+{{ movie["Movie"] }}
+</div>
+
+<div class="info">
+🎭 {{ movie["Genre"] }}
+</div>
+
+<div class="info rating">
+⭐ {{ movie["Rating"] }}/5
+</div>
+
+<div class="info">
+📅 {{ movie["Year"] }}
+</div>
+
+<div class="info">
+🌍 {{ movie["Country"] }}
+</div>
+
+<a href="https://www.youtube.com/results?search_query={{ movie['Movie'] }}+trailer"
+target="_blank"
+class="watch">
+▶ Watch Trailer
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<a href="/" class="back">
+⬅ Back to Home
+</a>
+
+</div>
+
+</body>
+</html>

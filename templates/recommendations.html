@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Movies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎬 Recommended {{ genre }} Movies</h1>
+
+    {% for movie in recommendations %}
+
+    <div class="movie-card">
+        <h2>{{ movie.Movie }}</h2>
+        <p><strong>Genre:</strong> {{ movie.Genre }}</p>
+        <p><strong>Rating:</strong> ⭐ {{ movie.Rating }}</p>
+    </div>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/">⬅ Back to Home</a>
+
+</div>
+
+</body>
+</html>

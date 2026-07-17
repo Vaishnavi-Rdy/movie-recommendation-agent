@@ -1,0 +1,62 @@
+Movie,Genre,Rating,Year,Language
+
+KGF,Action,4.8,2018,Kannada
+KGF Chapter 2,Action,4.9,2022,Kannada
+Salaar,Action,4.7,2023,Telugu
+Pushpa,Action,4.8,2021,Telugu
+Pushpa 2,Action,4.9,2024,Telugu
+Leo,Action,4.6,2023,Tamil
+Vikram,Action,4.8,2022,Tamil
+Bahubali,Action,4.9,2015,Telugu
+Bahubali 2,Action,5.0,2017,Telugu
+Kantara,Action,4.8,2022,Kannada
+RRR,Action,4.9,2022,Telugu
+Jailer,Action,4.7,2023,Tamil
+Master,Action,4.6,2021,Tamil
+Kaithi,Action,4.8,2019,Tamil
+
+
+Hi Nanna,Romance,4.8,2023,Telugu
+Sita Ramam,Romance,4.9,2022,Telugu
+Geetha Govindam,Romance,4.7,2018,Telugu
+Fidaa,Romance,4.8,2017,Telugu
+Love Story,Romance,4.6,2021,Telugu
+Majili,Romance,4.7,2019,Telugu
+Tholi Prema,Romance,4.6,2018,Telugu
+Dear Comrade,Romance,4.6,2019,Telugu
+Radhe Shyam,Romance,4.5,2022,Telugu
+96,Romance,4.9,2018,Tamil
+u
+
+DJ Tillu,Comedy,4.8,2022,Telugu
+Tillu Square,Comedy,4.8,2024,Telugu
+Jathi Ratnalu,Comedy,4.9,2021,Telugu
+MAD,Comedy,4.7,2023,Telugu
+Brochevarevarura,Comedy,4.8,2019,Telugu
+Ee Nagaraniki Emaindi,Comedy,4.9,2018,Telugu
+F2,Comedy,4.6,2019,Telugu
+F3,Comedy,4.5,2022,Telugu
+Aha Naa Pellanta,Comedy,4.6,2011,Telugu
+Bhale Bhale Magadivoy,Comedy,4.8,2015,Telugu
+Jamba Lakidi Pamba,Comedy,4.5,1993,Telugu
+Ready,Comedy,4.7,2008,Telugu
+
+Virupaksha,Horror,4.7,2023,Telugu
+Masooda,Horror,4.8,2022,Telugu
+Pizza,Horror,4.7,2012,Tamil
+Arundhati,Horror,4.9,2009,Telugu
+Chandramukhi,Horror,4.8,2005,Tamil
+Demonte Colony,Horror,4.6,2015,Tamil
+
+Hit,Thriller,4.8,2020,Telugu
+Hit 2,Thriller,4.8,2022,Telugu
+Hit 3,Thriller,4.9,2025,Telugu
+Karthikeya,Thriller,4.7,2014,Telugu
+Karthikeya 2,Thriller,4.8,2022,Telugu
+Agent Sai Srinivasa Athreya,Thriller,4.9,2019,Telugu
+Goodachari,Thriller,4.9,2018,Telugu
+Evaru,Thriller,4.8,2019,Telugu
+Rakshasudu,Thriller,4.8,2019,Telugu
+Drishyam,Thriller,4.9,2013,Malayalam
+Drishyam 2,Thriller,5.0,2021,Malayalam
+Ratsasan,Thriller,5.0,2018,Tamil
